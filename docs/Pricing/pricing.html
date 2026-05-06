@@ -3,6 +3,17 @@
 <head>
     <title>FlowFix | Pricing</title>
     <link rel="stylesheet" href="pricing.css">
+    <script>
+        (function() 
+          {
+              const savedTheme = localStorage.getItem('theme');
+              if (savedTheme)
+              {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+              }
+          }
+        )();
+    </script>
 </head>
 <body>
 

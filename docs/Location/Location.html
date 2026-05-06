@@ -8,6 +8,17 @@
     <title>Location</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="./Location.css">
+    <script>
+        (function() 
+          {
+              const savedTheme = localStorage.getItem('theme');
+              if (savedTheme)
+              {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+              }
+          }
+        )();
+    </script>
 </head>
 <body>
     <!-- Page Header / Nav Bar-->

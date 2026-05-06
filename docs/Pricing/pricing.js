@@ -1,32 +1,58 @@
 // @judykuang implemented JavaScript for Pricing Webpage
 
 //Dark Mode Toggle Function with Icon Swapping
+// const themeToggle = document.getElementById("themeToggle");
+
+// if (themeToggle)
+// {
+//   themeToggle.addEventListener("click", function()
+//   {
+//     const html = document.documentElement;
+//     const themeIcon = this.querySelector("img");
+
+//     // Checks if webpage is currently in Dark Mode
+//     const isDark = html.getAttribute("data-theme") === "dark";
+
+//     if (isDark)
+//     {
+//       // If webpage is in dark mode, switch to light mode
+//       html.setAttribute("data-theme", "light");
+//       themeIcon.src = "dark-mode.png";
+//       themeIcon.alt = "Switch to Dark Mode"; // Alternative Text for greater accessibility
+//     }
+//     else
+//     {
+//       // If webpage is in light mode, switch to dark mode
+//       html.setAttribute("data-theme", "dark");
+//       themeIcon.src = "light-mode.png";
+//       themeIcon.alt = "Switch to Light Mode"; // Alternative Text for greater accessibility
+//     }
+//   });
+// }
+
+// Light & Dark Mode Toggle with Local Storage that saves user's choice
 const themeToggle = document.getElementById("themeToggle");
 
-if (themeToggle)
+if (themeToggle) 
 {
-  themeToggle.addEventListener("click", function()
-  {
-    const html = document.documentElement;
-    const themeIcon = this.querySelector("img");
+  const html = document.documentElement;
+  const themeIcon = themeToggle.querySelector("img");
 
-    // Checks if webpage is currently in Dark Mode
+  const updateIcon = (isDark) => {
+    themeIcon.src = isDark ? "light-mode.png" : "dark-mode.png";
+    themeIcon.alt = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
+  };
+
+  const currentThemeDark = html.getAttribute("data-theme") === "dark";
+  updateIcon(currentThemeDark);
+
+  // On click, toggle between the themes & store the current theme in local storage
+  themeToggle.addEventListener("click", function() {
     const isDark = html.getAttribute("data-theme") === "dark";
-
-    if (isDark)
-    {
-      // If webpage is in dark mode, switch to light mode
-      html.setAttribute("data-theme", "light");
-      themeIcon.src = "dark-mode.png";
-      themeIcon.alt = "Switch to Dark Mode"; // Alternative Text for greater accessibility
-    }
-    else
-    {
-      // If webpage is in light mode, switch to dark mode
-      html.setAttribute("data-theme", "dark");
-      themeIcon.src = "light-mode.png";
-      themeIcon.alt = "Switch to Light Mode"; // Alternative Text for greater accessibility
-    }
+    const newTheme = isDark ? "light" : "dark";
+    html.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    updateIcon(!isDark);
   });
 }
 
