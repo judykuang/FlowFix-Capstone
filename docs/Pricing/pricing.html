@@ -1,57 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>FlowFix | Pricing</title>
-    <link rel="stylesheet" href="pricing.css">
-    <script>
-        (function() 
-          {
-              const savedTheme = localStorage.getItem('theme');
-              if (savedTheme)
-              {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-              }
-          }
-        )();
-    </script>
-</head>
-<body>
+    <head>
+        <title>FlowFix | Pricing</title>
+        <link rel="stylesheet" href="pricing.css">
+        <script>
+            (function() 
+            {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme)
+                {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                }
+            }
+            )();
+        </script>
+    </head>
 
+    <body>
     <!-- NAVBAR -->
-<header class="nav">
-    <div class="nav-inner">
-        <a href="../index.html">
-            <div class="logo">FlowFix</div>
-        </a>
+     <header class="main-header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1><a href="../index.html">FlowFix</a></h1>
+                </div>
 
-        <!-- @judykuang (april 27, 2026) - updated nav links to use relative path instead of absolute path -->
-        <nav class="nav-links">
-            <a href="..Login/login.html">Log In</a>
-            <a href="../Pricing/pricing.html">Pricing</a>
-            <a href="../Location/Location.html">Location</a>
-            <a href="../FAQ/FAQ.html">FAQ</a>
-            <a href="../Pricing/contact.html">Contact</a>
-        </nav>
-
-        <!-- <a href="https://leilamoumou.github.io/flowfix-capstone/emergency/emergency.html" class="nav-cta">Emergency Help</a> -->
-
-        <a href="#Emergency-Plumbing" class="btn btn-emergency" id="myBtn">Emergency Help</a>
-            <div id="myModal" class="modal">
-              <div class ="modal-content">
-                <span class="close">&times;</span>
-                <p>
-                  For Emergency Help, please call (123)-456-7890.
-                  <br>
-                  Our 24/7 support team will assist you.
-                </p>
-              </div>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <nav class="main-nav">
+                    <a href="../Login/login.html" class="btn">Login</a>
+                    <a href="../Pricing/pricing.html" class="btn">Pricing</a>
+                    <a href="../Location/Location.html" class="btn">Location</a>
+                    <a href="../FAQ/FAQ.html" class="btn">FAQ</a>
+                    <a href="../Pricing/contact.html" class="btn">Contact</a>
+                    <a href="#Emergency-Plumbing" class="btn btn-emergency" id="myBtn">Emergency Help</a>
+                   
+                    <button class="btn theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                        <img src="dark-mode.png" id="themeIcon" alt="Dark Mode Icon" width="30" height="30">
+                    </button>
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p>
+                                For Emergency Help, please call (123)-456-7890.
+                                <br>
+                                Our 24/7 support team will assist you.
+                            </p>
+                        </div>
+                    </div>
+                </nav>
             </div>
+        </div>
+     </header>
 
-        <button class="btn theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
-            <img src="../dark-mode.png" id="themeIcon" alt="Dark Mode Icon" width="30" height="30">
-        </button>
-    </div>
-</header>
 
     <!-- HERO SECTION -->
     <section class="hero">

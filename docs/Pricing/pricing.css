@@ -9,8 +9,14 @@ body {
     color: #111;
 }
 
+.container {
+    max-width:  1100px;
+    margin: 0 auto;
+    padding: 0 1.5 rem;
+  }
+
 /* NAVBAR */
-.nav {
+/* .nav {
     background: #ffffff;
     border-bottom: 1px solid #e5e5e5;
     padding: 14px 50px;
@@ -64,8 +70,110 @@ body {
 
 .logo {
     margin: 0;
+} */
+
+/* UPDATED NAV BAR STYLING from Leila's index.css */
+.main-header {
+    background: #1e3a5f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    top: 0;
+    z-index: 100;
+  }
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+  }
+  .logo h1{
+    color: #fff;
+    margin: 0;
+  }
+  
+  /* Navigation Bar background color */
+  .main-header {
+    background-color: white;
+  }
+  
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .main-nav a,
+  .main-nav button {
+    color: black;
+    padding: 8px 14px;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+  }
+  /* Buttons */
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Inria Sans', sans-serif;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  [data-theme="dark"] .main-header {
+    background:  #0f1f33;
+  }
+  
+  [data-theme="dark"] a {
+    color:white;
+  }
+  
+  [data-theme="dark"] .login-section {
+    background-color: #193455;
+  }
+
+/* hamborg styling from Leila's index.css */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  .hamburger span {
+     display: block;
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    border-radius: 3px;
+  }
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+     gap: 8px;
+    }
+    .main-nav.open {
+      display: flex;
+    }
+  }
+
+/* Styling for the Icon */
+.btn.theme-toggle img{
+    width: 24px;
+    height: 24px;
+    display: block;
+    object-fit: contain;
 }
 
+  
 /* HERO */
 .hero {
     text-align: center;
@@ -191,12 +299,12 @@ body {
     color: white;
 }
 
-[data-theme="dark"] .nav {
+[data-theme="dark"] .nav-wrapper {
     background-color: #0f1f33;
     border-bottom: 1px solid #334155;
 }
 
-[data-theme="dark"] .nav-links a,
+[data-theme="dark"] .a,
 [data-theme="dark"] .logo {
     color: white !important;
 }
