@@ -273,7 +273,7 @@ h1 {
 */
 
 [data-theme="dark"] .main-header {
-    background-color: #1e3a5f;
+    background-color: #0f1f33;
 }
 
 /* Dark Mode - Logo switches to white */
@@ -298,19 +298,19 @@ h1 {
 
 /* Styling for Divider in dark mode */
 [data-theme="dark"] .divider {
-    background-color: #1e3a5f !important;
+    background-color: #0f1f33 !important;
     color: white !important;
     text-shadow: none !important;
 }
 
 [data-theme="dark"] .divider::before,
 [data-theme="dark"] .divider::after {
-    background-color: #1e3a5f !important;
+    background-color: #0f1f33 !important;
 }
 
 [data-theme="dark"] .dividerHQ::before,
 [data-theme="dark"] .dividerHQ::after {
-    background-color: #1e3a5f !important;
+    background-color: #0f1f33 !important;
 }
 
 /* Styling for DividerHQ in dark mode */
@@ -319,10 +319,6 @@ h1 {
     color: white !important;
     text-shadow: none !important;
 }
-
-
-/* TO DO - Styling for Footer in dark mode */
-
 
 /* The nav buttons are hidden on mobile by default */
 @media (max-width: 768px) {

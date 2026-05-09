@@ -27,6 +27,9 @@ body {
   font-size: 26px;
   color: #111;
   margin: 0;
+  text-decoration: none !important;
+  outline: none;
+  border-bottom: none;
 }
 
 .nav-links {
@@ -265,7 +268,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 [data-theme="dark"] .nav {
-  background-color: #1e3a5f;
+  background-color: #0f1f33;
   border-bottom: 1px solid #334155;
 }
 
@@ -379,4 +382,11 @@ input:focus, select:focus, textarea:focus {
 /* Dark Mode Modal */
 [data-theme="dark"] .modal p {
   color: black;
+}
+
+.logo, .logo-link, a.logo {
+  text-decoration: none !important;
+  outline: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
