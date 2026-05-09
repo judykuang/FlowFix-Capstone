@@ -180,7 +180,7 @@ padding: 1.5rem;
 
 /* Styling for the Icon */
 .btn.theme-toggle img{
- width: 24px;
+  width: 24px;
   height: 24px;
   display: block;
   object-fit: contain;
