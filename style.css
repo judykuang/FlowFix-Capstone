@@ -68,11 +68,18 @@ body {
   background-color: #193455;
 }
 
+h2 {
+  padding-left: 1.5rem;
+  padding-top: 0rem;
+}
+
 /* SERVICES GRID STYLE */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 .service-card {
 padding: 1.5rem;
