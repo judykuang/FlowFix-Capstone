@@ -77,6 +77,7 @@ h2 {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
   gap: 1.5rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
