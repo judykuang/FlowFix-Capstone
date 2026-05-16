@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlowFix - Login</title>
    <link rel="stylesheet" href="../style.css">
+   <script>
+    (function() 
+      {
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme)
+          {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+          }
+      }
+    )();
+  </script>
   </head>
 
   <body>
@@ -13,7 +24,7 @@
       <div class="container">
         <div class="nav-wrapper">
           <div class="logo">
-            <h1><a href="/docs/index.html">Flowfix</a></h1>
+            <h1><a href="../index.html">FlowFix</a></h1>
           </div>
           <button class="hamburger" id="hamburger" aria-label="Toggle menu">
             <span></span>

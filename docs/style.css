@@ -84,11 +84,19 @@ body {
   background-color: #193455;
 }
 
+h2 {
+  padding-left: 1.5rem;
+  padding-top: 0rem;
+}
+
 /* SERVICES GRID STYLE */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
   gap: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 .service-card {
 padding: 1.5rem;
@@ -227,7 +235,7 @@ padding: 1.5rem;
 
 /* Styling for the Icon */
 .btn.theme-toggle img{
- width: 24px;
+  width: 24px;
   height: 24px;
   display: block;
   object-fit: contain;
@@ -242,7 +250,7 @@ padding: 1.5rem;
   text-decoration: none;
   transition: transform 0.2s, background-color 0.2s;
   box-shadow: 0 2px 5px 0 rgba (0, 0, 0, 0.15);
-  color: white !important;
+  color: black !important;
   padding: 10px;
 }
 
@@ -250,6 +258,7 @@ padding: 1.5rem;
   background-color: #ea6c0a;
   color: white;
 }
+
 /* Login Page Styling */
 .login-section {
   background-color: #f1f1f1;

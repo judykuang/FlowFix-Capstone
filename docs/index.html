@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlowFix - Where All Your Problems Flow Away</title>
     <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+          document.documentElement.setAttribute("data-theme", savedTheme);
+        }
+      })();
+    </script>
   </head>
 
   <body>
@@ -67,6 +75,32 @@
           <h3>Got Questions?</h3>
           <p>Browse our FAQ for answers to common plumbing questions and how our services work.</p>
           <a href="FAQ/FAQ.html">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-choose-us" aria-labelledby="why-choose-heading">
+      <h2 id="why-choose-heading">Why Choose Us</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Efficiency</h3>
+          <p>
+            Our AI-powered chatbot scheduler helps you efficiently make appointments.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Personalization</h3>
+          <p>
+            Our team consists of plumbers who specialize in various aspects of the trade. Book with us to find a plumber that fits your needs!
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Affordable</h3>
+          <p>
+            We understand that plumbing services may be costly, so we offer prices that are often lower than the market rate!
+          </p>
         </div>
       </div>
     </section>
