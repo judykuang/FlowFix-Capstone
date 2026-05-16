@@ -6,92 +6,81 @@
     <title>FlowFix - Where All Your Problems Flow Away</title>
     <link rel="stylesheet" href="style.css" />
     <script>
-      // The function runs as soon as the page loads
-      // If there is a saved theme, load it
-      (function() 
-        {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme)
-            {
-              document.documentElement.setAttribute('data-theme', savedTheme);
-            }
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+          document.documentElement.setAttribute("data-theme", savedTheme);
         }
-      )();
+      })();
     </script>
   </head>
 
   <body>
-    <!-- Navigation Header -->
+    <!-- Site header: logo, primary nav, emergency CTA, theme toggle (see button-behavior.js) -->
     <header class="main-header">
       <div class="container">
         <div class="nav-wrapper">
           <div class="logo">
-            <h1><a href="index.html">FlowFix</a></h1>
-
+            <h1><a href="index.html">Flowfix</a></h1>
           </div>
-          <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <button class="hamburger" id="hamburger" type="button" aria-label="Toggle menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
           </button>
-         <nav class="main-nav">
+          <nav class="main-nav">
             <a href="Login/login.html" class="btn">Login</a>
-            <!-- <a href="GEN-Maintenance-Check/Maintenance.html" class="btn">General Maintenance Check</a> -->
+            <a href="GEN-Maintenance-Check/Maintenance.html" class="btn">General Maintenance</a>
             <a href="Pricing/pricing.html" class="btn">Pricing</a>
             <a href="Location/Location.html" class="btn">Location</a>
             <a href="FAQ/FAQ.html" class="btn">FAQ</a>
             <a href="Pricing/contact.html" class="btn">Contact</a>
-            <!--TODO @leilamoumou, implement emergency button-->
             <a href="#Emergency-Plumbing" class="btn btn-emergency" id="myBtn">Emergency Help</a>
-            <div id="myModal" class="modal">
-              <div class ="modal-content">
-                <span class="close">&times;</span>
+            <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+              <div class="modal-content">
+                <span class="close" role="button" tabindex="0" aria-label="Close">&times;</span>
                 <p>
                   For Emergency Help, please call (123)-456-7890.
-                  <br>
+                  <br />
                   Our 24/7 support team will assist you.
                 </p>
               </div>
             </div>
-            <button class="btn theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
-              <img src="dark-mode.png" id="themeIcon" alt="Dark Mode Icon" width="30" height="30">
+            <button class="btn theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+              <img src="dark-mode.png" id="themeIcon" alt="Dark mode icon" width="30" height="30" />
             </button>
           </nav>
         </div>
       </div>
     </header>
 
-    <!---- Sections to toggle through --->
-    <section id="Emergency-Plumbing">
-      <h2>Our Services</h2>
+    <!-- Service cards: each CTA routes to a real page or in-page anchor (Figma service grid) -->
+    <section class="services-section" id="services" aria-labelledby="services-heading">
+      <h2 id="services-heading">Our Services</h2>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card" id="Emergency-Plumbing">
           <h3>Emergency Plumbing</h3>
           <p>
-            Connect with those best suited for your plumbing needs here, and
-            save yourself the stress of other platforms' costs!
+            Connect with those best suited for your plumbing needs here, and save yourself the stress of other
+            platforms' costs!
           </p>
-          <a href="#Emergency-Plumbing">Get your flow fixed here.</a>
+          <a href="Pricing/contact.html?service=emergency">Get your flow fixed here.</a>
         </div>
         <div class="service-card" id="Maintenance-Check">
           <h3>General Maintenance</h3>
-          <p>
-            Schedule checkups to ensure your plumbing is running smoothly all
-            year round.
-          </p>
-          <a href="#Maintenance-Check">Learn More</a>
+          <p>Schedule checkups to ensure your plumbing is running smoothly all year round.</p>
+          <a href="GEN-Maintenance-Check/Maintenance.html">Learn More</a>
         </div>
         <div class="service-card">
           <h3>Got Questions?</h3>
-          <p>
-            Browse our FAQ for answers to common plumbing questions and how our
-            services work.
-          </p>
+          <p>Browse our FAQ for answers to common plumbing questions and how our services work.</p>
           <a href="FAQ/FAQ.html">Learn More</a>
+        </div>
+      </div>
     </section>
 
-    <section id="Emergency-Plumbing">
-      <h2>Why Choose Us</h2>
+    <section id="why-choose-us" aria-labelledby="why-choose-heading">
+      <h2 id="why-choose-heading">Why Choose Us</h2>
       <div class="services-grid">
         <div class="service-card">
           <h3>Efficiency</h3>
@@ -103,7 +92,7 @@
         <div class="service-card">
           <h3>Personalization</h3>
           <p>
-            Our team consists of plumbers who specialize in various aspects of the trade. Book with us to find a plumber that fits your needs! 
+            Our team consists of plumbers who specialize in various aspects of the trade. Book with us to find a plumber that fits your needs!
           </p>
         </div>
 
@@ -115,453 +104,40 @@
         </div>
       </div>
     </section>
-    <!-- END OF SERVICE CARDS-->
 
-      </div>
-    </div>
-    <script src="script.js"></script>
-    <script type="module" src="auth-state.js"></script>
-<!-- ============================================================
-            Chatbot Widget
-     Remaining TODOS within it @Leilamoumou
-     -mock data to be replaced with Judy's findings + create accounts aligned
-     -call firebase to check if user's logged in
-     -train ai api && connect with chatbot.
-     ============================================================ -->
+    <script src="button-behavior.js" defer></script>
+    <script type="module" src="auth-state.js" defer></script>
 
-<style>
-  #ff-fab {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #1e3a5f;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    transition: transform 0.2s, background 0.2s;
-  }
-  #ff-fab:hover { background: #f97316; transform: scale(1.08); }
-  #ff-fab svg { width: 26px; height: 26px; fill: #fff; }
-
-  #ff-panel {
-    position: fixed;
-    bottom: 96px;
-    right: 28px;
-    width: 340px;
-    height: 500px;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 8px 40px rgba(30,58,95,0.18);
-    display: none;
-    flex-direction: column;
-    z-index: 998;
-    overflow: hidden;
-    font-family: 'Inria Sans', Georgia, serif;
-  }
-  #ff-panel.open { display: flex; }
-
-  .ff-header {
-    background: #1e3a5f;
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .ff-header-left { display: flex; align-items: center; gap: 10px; }
-  .ff-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: #f97316;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 14px; color: #fff;
-  }
-  .ff-header-info p { margin: 0; }
-  .ff-header-info .ff-name { color: #fff; font-weight: 700; font-size: 14px; }
-  .ff-header-info .ff-status { color: #93c5fd; font-size: 11px; }
-  .ff-close { background: none; border: none; color: #93c5fd; font-size: 20px; cursor: pointer; line-height: 1; }
-  .ff-close:hover { color: #fff; }
-
-  .ff-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 14px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: #f8fafc;
-  }
-
-  .ff-bubble-wrap { display: flex; flex-direction: column; }
-  .ff-bubble-wrap.user { align-items: flex-end; }
-  .ff-bubble-wrap.bot { align-items: flex-start; }
-
-  .ff-bubble {
-    max-width: 82%;
-    padding: 9px 13px;
-    border-radius: 14px;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  .ff-bubble.bot { background: #fff; border: 0.5px solid #e2e8f0; color: #1e3a5f; border-bottom-left-radius: 4px; }
-  .ff-bubble.user { background: #1e3a5f; color: #fff; border-bottom-right-radius: 4px; }
-
-  .ff-options { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-  .ff-opt-btn {
-    background: #fff;
-    border: 1.5px solid #1e3a5f;
-    color: #1e3a5f;
-    border-radius: 20px;
-    padding: 5px 12px;
-    font-size: 12px;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background 0.15s, color 0.15s;
-  }
-  .ff-opt-btn:hover { background: #1e3a5f; color: #fff; }
-
-  .ff-match-card {
-    background: #fff;
-    border: 1.5px solid #1e3a5f;
-    border-radius: 12px;
-    padding: 12px;
-    margin-top: 4px;
-    max-width: 90%;
-  }
-  .ff-match-card .ff-mc-name { font-weight: 700; color: #1e3a5f; font-size: 14px; margin-bottom: 4px; }
-  .ff-match-card .ff-mc-detail { font-size: 12px; color: #64748b; margin: 2px 0; }
-  .ff-match-card .ff-mc-badge {
-    display: inline-block;
-    background: #f97316;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin-top: 6px;
-  }
-
-  .ff-signup-prompt {
-    background: #fff7ed;
-    border: 1.5px solid #f97316;
-    border-radius: 12px;
-    padding: 12px;
-    margin-top: 4px;
-    max-width: 90%;
-  }
-  .ff-signup-prompt p { margin: 0 0 8px; font-size: 12px; color: #7c2d12; line-height: 1.5; }
-  .ff-signup-btn {
-    background: #f97316; color: #fff; border: none;
-    border-radius: 8px; padding: 7px 14px;
-    font-size: 12px; font-weight: 700; cursor: pointer;
-    font-family: inherit;
-  }
-  .ff-signup-btn:hover { background: #ea6c0a; }
-
-  .ff-input-area {
-    display: flex;
-    gap: 8px;
-    padding: 10px 12px;
-    border-top: 0.5px solid #e2e8f0;
-    background: #fff;
-  }
-  .ff-input-area input {
-    flex: 1;
-    padding: 8px 12px;
-    border: 1px solid #e2e8f0;
-    border-radius: 20px;
-    font-size: 13px;
-    font-family: inherit;
-    outline: none;
-    color: #1e3a5f;
-  }
-  .ff-input-area input:focus { border-color: #1e3a5f; }
-  .ff-send {
-    background: #f97316; border: none; border-radius: 50%;
-    width: 34px; height: 34px; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .ff-send:hover { background: #ea6c0a; }
-  .ff-send svg { width: 16px; height: 16px; fill: #fff; }
-
-  .ff-typing { display: flex; gap: 4px; align-items: center; padding: 4px 2px; }
-  .ff-typing span {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: #cbd5e1; animation: ffbounce 1s infinite;
-  }
-  .ff-typing span:nth-child(2) { animation-delay: 0.15s; }
-  .ff-typing span:nth-child(3) { animation-delay: 0.3s; }
-  @keyframes ffbounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
-</style>
-
-<!-- Floating Chat Btn -->
-<button id="ff-fab" aria-label="Open FlowFix chat">
-  <svg viewBox="0 0 24 24"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
-</button>
-
-<!-- Chat panel -->
-<div id="ff-panel" role="dialog" aria-label="FlowFix chatbot">
-  <div class="ff-header">
-    <div class="ff-header-left">
-      <div class="ff-avatar">FF</div>
-      <div class="ff-header-info">
-        <p class="ff-name">FlowFix Assistant</p>
-        <p class="ff-status">Online — here to help</p>
-      </div>
-    </div>
-    <button class="ff-close" id="ff-close" aria-label="Close chat">×</button>
-  </div>
-  <div class="ff-messages" id="ff-messages"></div>
-  <div class="ff-input-area">
-    <input type="text" id="ff-input" placeholder="Type a message..." aria-label="Chat input" />
-    <button class="ff-send" id="ff-send" aria-label="Send">
-      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    <!--
+      Chatbot widget (markup only; open/close/send logic in button-behavior.js).
+      Matches design tokens: navy #1e3a5f, accent #f97316.
+    -->
+    <button type="button" id="ff-fab" aria-label="Open FlowFix chat" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+        />
+      </svg>
     </button>
-  </div>
-</div>
-<script>
-const SPECIALTIES = ["Leak Repair","Pipe Replacement","Drain Cleaning","Water Heater","Toilet Repair","Sewer Line","Emergency Service"];
- 
-// 
-const MOCK_PLUMBERS = [
-  { name: "Carlos Rivera",   specialties: ["Leak Repair","Pipe Replacement","Water Heater"],          rating: 4.8, eta: "30 mins" },
-  { name: "James Okafor",    specialties: ["Drain Cleaning","Sewer Line","Toilet Repair"],             rating: 4.7, eta: "45 mins" },
-  { name: "Maria Santos",    specialties: ["Water Heater","Pipe Replacement","Emergency Service"],     rating: 4.9, eta: "20 mins" },
-  { name: "Derek Chen",      specialties: ["Leak Repair","Drain Cleaning","Toilet Repair"],            rating: 4.6, eta: "1 hr"    },
-  { name: "Aisha Thompson",  specialties: ["Emergency Service","Sewer Line","Pipe Replacement"],       rating: 4.9, eta: "15 mins" }
-];
- 
-const jobData = { jobType: "", description: "", urgency: "", location: "" };
-let step = 0;
-let isLoggedIn = false;
-let waitingForInput = false;
- 
-// ── Firebase auth check ──
-try { isLoggedIn = !!window.auth?.currentUser; } catch(e) {}
- 
-const steps = [
-  { field: "jobType",     type: "options", prompt: "What type of job do you need help with?", options: SPECIALTIES },
-  { field: "description", type: "text",    prompt: "Can you describe the issue in a bit more detail?" },
-  { field: "urgency",     type: "options", prompt: "How urgent is this?", options: ["Low — can wait a few days", "Medium — within 24 hours", "High — as soon as possible"] },
-  { field: "location",    type: "text",    prompt: "What's your borough or neighborhood in NYC?" }
-];
- 
 
-function messagesEl() { return document.getElementById("ff-messages"); }
-function scrollBottom() { const el = messagesEl(); el.scrollTop = el.scrollHeight; }
- 
-function addBubble(text, side) {
-  const wrap = document.createElement("div");
-  wrap.className = "ff-bubble-wrap " + side;
-  const bubble = document.createElement("div");
-  bubble.className = "ff-bubble " + side;
-  bubble.textContent = text;
-  wrap.appendChild(bubble);
-  messagesEl().appendChild(wrap);
-  scrollBottom();
-}
- 
-function addOptions(opts, onSelect) {
-  const wrap = document.createElement("div");
-  wrap.className = "ff-bubble-wrap bot";
-  const div = document.createElement("div");
-  div.className = "ff-options";
-  opts.forEach(o => {
-    const btn = document.createElement("button");
-    btn.className = "ff-opt-btn";
-    btn.textContent = o;
-    btn.onclick = () => {
-      div.querySelectorAll(".ff-opt-btn").forEach(b => b.disabled = true);
-      onSelect(o);
-    };
-    div.appendChild(btn);
-  });
-  wrap.appendChild(div);
-  messagesEl().appendChild(wrap);
-  scrollBottom();
-}
- 
-function showTyping() {
-  const wrap = document.createElement("div");
-  wrap.className = "ff-bubble-wrap bot";
-  wrap.id = "ff-typing-wrap";
-  const bubble = document.createElement("div");
-  bubble.className = "ff-bubble bot";
-  bubble.innerHTML = '<div class="ff-typing"><span></span><span></span><span></span></div>';
-  wrap.appendChild(bubble);
-  messagesEl().appendChild(wrap);
-  scrollBottom();
-}
- 
-function removeTyping() {
-  const t = document.getElementById("ff-typing-wrap");
-  if (t) t.remove();
-}
- 
-function botSay(text, delay, afterFn) {
-  return new Promise(res => {
-    showTyping();
-    setTimeout(() => {
-      removeTyping();
-      addBubble(text, "bot");
-      if (afterFn) afterFn();
-      res();
-    }, delay || 600);
-  });
-}
- 
-// showMatchCard will render plumber.reason from Gemini (to be installed )
-function showMatchCard(plumber) {
-  const card = document.createElement("div");
-  card.className = "ff-match-card";
-  card.innerHTML =
-    '<div class="ff-mc-name">' + plumber.name + '</div>' +
-    '<div class="ff-mc-detail">Specialty: ' + (plumber.specialties?.[0] ?? "General") + '</div>' +
-    '<div class="ff-mc-detail">Rating: ' + plumber.rating + ' / 5</div>' +
-    '<div class="ff-mc-detail">ETA: ' + plumber.eta + '</div>' +
-    // Gemini's reasoning for matching
-    (plumber.reason ? '<div class="ff-mc-detail" style="margin-top:6px;font-style:italic;color:#1e3a5f;">' + plumber.reason + '</div>' : '') +
-    '<span class="ff-mc-badge">Best Match</span>';
-  const wrap = document.createElement("div");
-  wrap.className = "ff-bubble-wrap bot";
-  wrap.appendChild(card);
-  messagesEl().appendChild(wrap);
-  scrollBottom();
-}
- 
-function showSignupPrompt() {
-  const card = document.createElement("div");
-  card.className = "ff-signup-prompt";
-  card.innerHTML = '<p>Create a free account to confirm your booking and get real-time updates from your plumber.</p>';
-  const btn = document.createElement("button");
-  btn.className = "ff-signup-btn";
-  btn.textContent = "Sign up to confirm";
-  btn.onclick = () => { window.location.href = "../Login/login.html"; };
-  card.appendChild(btn);
-  const wrap = document.createElement("div");
-  wrap.className = "ff-bubble-wrap bot";
-  wrap.appendChild(card);
-  messagesEl().appendChild(wrap);
-  scrollBottom();
-}
- 
-// calls Firebase Function instead of local findMatch() ──
-async function callMatchPlumber() {
-  const matchFn = firebase.functions().httpsCallable("matchPlumber");
-  const result = await matchFn({ jobData, plumbers: MOCK_PLUMBERS });
-  return result.data; // { name, specialties, rating, eta, reason }
-}
- 
-// Flow
-async function handleAnswer(answer) {
-  const currentStep = steps[step];
-  jobData[currentStep.field] = answer.replace(/ — .+/, "");
-  addBubble(answer, "user");
-  step++;
- 
-  if (step < steps.length) {
-    await botSay(steps[step].prompt, 700);
-    if (steps[step].type === "options") {
-      addOptions(steps[step].options, handleAnswer);
-      waitingForInput = false;
-    } else {
-      waitingForInput = true;
-    }
-  } else {
-    await finishFlow();
-  }
-}
- 
-
-async function finishFlow() {
-  waitingForInput = false;
-  showTyping();
-  await new Promise(r => setTimeout(r, 800));
-  removeTyping();
- 
-  await botSay("Finding your best match, give me just a moment to do so!", 100);
-  showTyping();
- 
-  let plumber;
-  try {
-    plumber = await callMatchPlumber();
-  } catch (err) {
-    removeTyping();
-    console.error("matchPlumber error:", err);
-    await botSay("Sorry, I had trouble finding a match right now. Please try again or fill our emergency form.", 300);
-    return;
-  }
- 
-  removeTyping();
-  await botSay("We found a great match for your " + jobData.jobType + " job!", 100);
-  showMatchCard(plumber);
- 
-  if (isLoggedIn) {
-    await botSay(plumber.name + " has been notified and will be on their way soon!", 1000);
-    // TODO: submitJobRequest(jobData) — your backend booking call goes here
-  } else {
-    await botSay("To confirm this booking, you'll need a FlowFix account.", 1000);
-    showSignupPrompt();
-  }
-}
- 
-async function startFlow() {
-  messagesEl().innerHTML = "";
-  step = 0;
-  Object.keys(jobData).forEach(k => jobData[k] = "");
- 
-  await botSay("Hi! I'm your FlowFix assistant, and I'll help match you with the right plumber for you.", 400);
-  await botSay("Are you a returning user or a guest?", 800, () => {
-    addOptions(["I have an account", "I'm a guest"], async (choice) => {
-      addBubble(choice, "user");
-      if (choice === "I have an account") {
-        isLoggedIn = true;
-        await botSay("Welcome back! Let's get you sorted.", 600);
-      } else {
-        isLoggedIn = false;
-        await botSay("No problem! I can still find you a match. You'll just need to sign up afterwards to confirm.", 700);
-      }
-      await botSay(steps[0].prompt, 700);
-      addOptions(steps[0].options, handleAnswer);
-      waitingForInput = false;
-    });
-  });
-}
- 
-// ── Event listeners (unchanged) ──
-document.getElementById("ff-fab").onclick = () => {
-  const panel = document.getElementById("ff-panel");
-  panel.classList.toggle("open");
-  if (panel.classList.contains("open") && messagesEl().children.length === 0) {
-    startFlow();
-  }
-};
- 
-document.getElementById("ff-close").onclick = () => {
-  document.getElementById("ff-panel").classList.remove("open");
-};
- 
-function sendText() {
-  if (!waitingForInput) return;
-  const input = document.getElementById("ff-input");
-  const val = input.value.trim();
-  if (!val) return;
-  input.value = "";
-  handleAnswer(val);
-}
- 
-document.getElementById("ff-send").onclick = sendText;
-document.getElementById("ff-input").addEventListener("keydown", e => {
-  if (e.key === "Enter") sendText();
-});
-</script>
-
-
-
+    <div id="ff-panel" role="dialog" aria-label="FlowFix chatbot">
+      <div class="ff-header">
+        <div class="ff-header-left">
+          <div class="ff-avatar" aria-hidden="true">FF</div>
+          <div class="ff-header-info">
+            <p class="ff-name">FlowFix Assistant</p>
+            <p class="ff-status">Online — here to help</p>
+          </div>
+        </div>
+        <button type="button" class="ff-close" id="ff-close" aria-label="Close chat">×</button>
+      </div>
+      <div class="ff-messages" id="ff-messages"></div>
+      <div class="ff-input-area">
+        <input type="text" id="ff-input" placeholder="Type a message..." autocomplete="off" aria-label="Chat input" />
+        <button type="button" class="ff-send" id="ff-send" aria-label="Send message">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
+        </button>
+      </div>
+    </div>
   </body>
 </html>
