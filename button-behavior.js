@@ -422,7 +422,7 @@ async function finishFlow() {
 
   let plumber;
   try {
-    const GEMINI_KEY = "AIzaSyDtIT8krE3WP7vgcjzwpDmW0fRtcCCc6Ys";
+    const GEMINI_KEY = "AIzaSyCYGUPAz_b1arQUBDwdN1l2eN-2LkQP8LY";
     const prompt = `You are a plumber-matching assistant for FlowFix, a NYC-based plumbing platform.
 Given the job details and plumbers list, return ONLY valid JSON with no additional/extra text.
 Shape: { "name": "...", "specialties": ["..."], "rating": 4.9, "eta": "...", "reason": "one sentence why" }
@@ -443,6 +443,7 @@ Return only the JSON.`;
         body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
       }
     );
+    
     const data = await res.json();
     const text = data.candidates[0].content.parts[0].text.trim();
     const cleaned = text.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
