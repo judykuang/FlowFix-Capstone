@@ -443,6 +443,7 @@ Return only the JSON.`;
         body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
       }
     );
+    
     const data = await res.json();
     const text = data.candidates[0].content.parts[0].text.trim();
     const cleaned = text.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
