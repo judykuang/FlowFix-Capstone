@@ -343,29 +343,22 @@
       return matched.length > 0 ? matched[0] : MOCK_PLUMBERS[0];
     }
 */
-    function showMatchCard(plumber) {
-      const card = document.createElement("div");
-      card.className = "ff-match-card";
-      card.innerHTML =
-        '<div class="ff-mc-name">' +
-        plumber.name +
-        "</div>" +
-        '<div class="ff-mc-detail">Specialty: ' +
-        plumber.specialties[0] +
-        "</div>" +
-        '<div class="ff-mc-detail">Rating: ' +
-        plumber.rating +
-        " / 5</div>" +
-        '<div class="ff-mc-detail">ETA: ' +
-        plumber.eta +
-        "</div>" +
-        '<span class="ff-mc-badge">Best Match</span>';
-      const wrap = document.createElement("div");
-      wrap.className = "ff-bubble-wrap bot";
-      wrap.appendChild(card);
-      messagesEl.appendChild(wrap);
-      scrollBottom();
-    }
+ function showMatchCard(plumber) {
+  const card = document.createElement("div");
+  card.className = "ff-match-card";
+  card.innerHTML =
+    '<div class="ff-mc-name">' + plumber.name + "</div>" +
+    '<div class="ff-mc-detail">Specialty: ' + plumber.specialties[0] + "</div>" +
+    '<div class="ff-mc-detail">Rating: ' + plumber.rating + " / 5</div>" +
+    '<div class="ff-mc-detail">ETA: ' + plumber.eta + "</div>" +
+    (plumber.reason ? '<div class="ff-mc-detail" style="margin-top:6px;font-style:italic;color:#1e3a5f;">' + plumber.reason + '</div>' : '') +
+    '<span class="ff-mc-badge">Best Match</span>';
+  const wrap = document.createElement("div");
+  wrap.className = "ff-bubble-wrap bot";
+  wrap.appendChild(card);
+  messagesEl.appendChild(wrap);
+  scrollBottom();
+}
 
     function showSignupPrompt() {
       const card = document.createElement("div");
