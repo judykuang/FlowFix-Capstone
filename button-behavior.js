@@ -416,58 +416,54 @@
     }
 
 async function finishFlow() {
-    waitingForInput = false;
-    await botSay("Finding your best match, give me just a moment!", 800);
-    showTyping();
+  waitingForInput = false;
+  await botSay("Finding your best match, give me just a moment!", 800);
+  showTyping();
 
-    let plumber;
-    try {
-      const GEMINI_KEY = "AIzaSyDtIT8krE3WP7vgcjzwpDmW0fRtcCCc6Ys";
-      const prompt = `You are a plumber-matching assistant for FlowFix, a NYC-based plumbing platform.
-  Given the job details and plumbers list, return ONLY valid JSON — no markdown, no extra text.
-  Shape: { "name": "...", "specialties": ["..."], "rating": 4.9, "eta": "...", "reason": "one sentence why" }
-  Job:
-  - Type: ${jobData.jobType}
-  - Description: ${jobData.description}
-  - Urgency: ${jobData.urgency}
-  - Location: ${jobData.location}
-  Plumbers:
-  ${JSON.stringify(MOCK_PLUMBERS, null, 2)}
-  Return only the JSON.`;
+  let plumber;
+  try {
+    const GEMINI_KEY = "AIzaSyDtIT8krE3WP7vgcjzwpDmW0fRtcCCc6Ys";
+    const prompt = `You are a plumber-matching assistant for FlowFix, a NYC-based plumbing platform.
+Given the job details and plumbers list, return ONLY valid JSON with no additional/extra text.
+Shape: { "name": "...", "specialties": ["..."], "rating": 4.9, "eta": "...", "reason": "one sentence why" }
+Job:
+- Type: ${jobData.jobType}
+- Description: ${jobData.description}
+- Urgency: ${jobData.urgency}
+- Location: ${jobData.location}
+Plumbers:
+${JSON.stringify(MOCK_PLUMBERS, null, 2)}
+Return only the JSON.`;
 
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-        }
-      );
-      const data = await res.json();
-      const text = data.candidates[0].content.parts[0].text.trim();
-      const cleaned = text.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
-      plumber = JSON.parse(cleaned);
-    } catch (err) {
-      removeTyping();
-      console.error("matchPlumber error:", err);
-      await botSay("Sorry, I had trouble finding a match. Please try again or call our emergency line.", 300);
-      return;
-    }
-
-   
-    removeTyping();
-    await botSay("We found a great match for your " + jobData.jobType + " job!", 100);
-    showMatchCard(plumber);
-
-    if (isLoggedIn) {
-      await botSay(plumber.name + " has been notified and will be on their way soon!", 1000);
-    } else {
-      await botSay("To confirm this booking, you'll need a free FlowFix account.", 1000);
-      showSignupPrompt();
-    }
-    flowActive = false;
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+      }
+    );
+    const data = await res.json();
+    const text = data.candidates[0].content.parts[0].text.trim();
+    const cleaned = text.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
+    plumber = JSON.parse(cleaned);
+  } catch (err) {
+    console.error("matchPlumber error:", err);
+    plumber = findMatch(jobData.jobType);
   }
-    
+
+  removeTyping();
+  await botSay("We found a great match for your " + jobData.jobType + " job!", 100);
+  showMatchCard(plumber);
+
+  if (isLoggedIn) {
+    await botSay(plumber.name + " has been notified and will be on their way soon!", 1000);
+  } else {
+    await botSay("To confirm this booking, you'll need a free FlowFix account.", 1000);
+    showSignupPrompt();
+  }
+  flowActive = false;
+}
 
     async function startFlow() {
       messagesEl.innerHTML = "";
