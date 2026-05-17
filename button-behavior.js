@@ -336,13 +336,13 @@
       });
     }
 
-  /*  function findMatch(jobType) {
+   function findMatch(jobType) {
       const matched = MOCK_PLUMBERS.filter(function (p) {
         return p.specialties.indexOf(jobType) !== -1;
       });
       return matched.length > 0 ? matched[0] : MOCK_PLUMBERS[0];
     }
-*/
+
  function showMatchCard(plumber) {
   const card = document.createElement("div");
   card.className = "ff-match-card";
