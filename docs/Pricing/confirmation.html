@@ -5,56 +5,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlowFix | Request Received</title>
   <link rel="stylesheet" href="contact.css" />
+  <script>
+    (function() 
+      {
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme)
+          {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+          }
+      }
+    )();
+  </script>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-<header class="nav">
-    <div class="nav-inner">
-        <div class="logo">FlowFix</div>
+  <!-- NAVBAR -->
+  <header class="main-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="logo">
+          <h1><a href="../index.html">FlowFix</a></h1>
+        </div>
 
-        <nav class="nav-links">
-            <a href="https://leilamoumou.github.io/flowfix-capstone/Login/login.html">Log In</a>
-            <a href="https://leilamoumou.github.io/flowfix-capstone/Pricing/pricing.html">Pricing</a>
-            <a href="https://leilamoumou.github.io/flowfix-capstone/Location/Location.html">Location</a>
-            <a href="https://leilamoumou.github.io/flowfix-capstone/FAQ/FAQ.html">FAQ</a>
-            <a href="https://leilamoumou.github.io/flowfix-capstone/Pricing/contact.html">Contact</a>
-        </nav>
-
-        <a class="nav-cta" href="tel:+15551234567">Emergency Help</a>
-
-        <button class="btn theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
-          <img src="../dark-mode.png" id="themeIcon" alt="Dark Mode Icon" width="30" height="30">
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
+              
+        <nav class="main-nav">
+          <a href="../Login/login.html" class="btn">Login</a>
+          <a href="../Pricing/pricing.html" class="btn">Pricing</a>
+          <a href="../Location/Location.html" class="btn">Location</a>
+          <a href="../FAQ/FAQ.html" class="btn">FAQ</a>
+          <a href="../Pricing/contact.html" class="btn">Contact</a>
+          <a href="#Emergency-Plumbing" class="btn btn-emergency" id="myBtn">Emergency Help</a>
+                 
+          <button class="btn theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+            <img src="dark-mode.png" id="themeIcon" alt="Dark Mode Icon" width="30" height="30">
+          </button>
 
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>
+                For Emergency Help, please call (123)-456-7890.
+                <br>
+                Our 24/7 support team will assist you.
+              </p>
+            </div>
+          </div>
+        </nav>
+      </div>
     </div>
-</header>
+  </header>
 
-<!-- HERO -->
-<div class="hero">
+  <!-- HERO -->
+  <div class="hero">
     <h1>Request Received ✓</h1>
     <p>Thank you for contacting FlowFix.</p>
-</div>
+  </div>
 
-<!-- CONFIRMATION SECTION -->
-<section class="contact" style="display:flex; justify-content:center; align-items:center; min-height:55vh;">
+  <!-- CONFIRMATION SECTION -->
+  <section class="contact" style="display:flex; justify-content:center; align-items:center; min-height:55vh;">
     <div style="width:100%; display:flex; justify-content:center;">
-        <div class="card form-card no-hover" style="max-width:700px; width:100%; text-align:center;">
+      <div class="card form-card no-hover" style="max-width:700px; width:100%; text-align:center;">
 
-            <h2 class="card-title">We've received your request</h2>
+        <h2 class="card-title">We've received your request</h2>
 
-            <p style="margin-top:20px;">
-                A member of our team will contact you shortly to confirm the details
-                and connect you with an available plumber.            </p>
+        <p style="margin-top:20px;">
+          A member of our team will contact you shortly to confirm the details
+          and connect you with an available plumber.
+        </p>
 
-            <div style="margin-top:25px; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-
-                <a class="card-btn" href="contact.html">Submit Another Request</a>
-                </a>
-            </div>
+        <div style="margin-top:25px; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+          <a class="card-btn" href="contact.html">Submit Another Request</a>
         </div>
+
+      </div>
     </div>
-</section>
+  </section>
+
+  <script src="contact.js"></script>
+  <script type="module" src="../auth-state.js"></script>
 
 </body>
 </html>
