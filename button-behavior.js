@@ -446,7 +446,7 @@ ${JSON.stringify(MOCK_PLUMBERS, null, 2)}
 Return only the JSON.`;
 
     const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${GEMINI_KEY}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -455,6 +455,7 @@ Return only the JSON.`;
     );
     
     const data = await res.json();
+    if (!res.ok) throw new Error(data.error?.message || "API error " + res.status);
     const text = data.candidates[0].content.parts[0].text.trim();
     const cleaned = text.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
     plumber = JSON.parse(cleaned);
