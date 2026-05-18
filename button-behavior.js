@@ -165,30 +165,20 @@
 
     // Emergency action: navigate to contact form section (Figma "scroll/navigate to contact").
     const emergencyBtn = document.getElementById("myBtn");
-const modal = document.getElementById("myModal");
-const closeBtn = modal ? modal.querySelector(".close") : null;
-
-if (emergencyBtn && modal) {
-  emergencyBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    modal.style.display = "block";
-    modal.setAttribute("aria-hidden", "false");
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", function () {
-      modal.style.display = "none";
-      modal.setAttribute("aria-hidden", "true");
-    });
-  }
-
-  window.addEventListener("click", function (e) {
-    if (e.target === modal) {
-      modal.style.display = "none";
-      modal.setAttribute("aria-hidden", "true");
-    }
-  });
-
+    if (emergencyBtn) {
+      emergencyBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const current = window.location.pathname || "";
+        const onContact = /\/Pricing\/contact\.html$/i.test(current);
+        if (onContact) {
+          const target = document.getElementById("contactForm");
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            return;
+          }
+        }
+        window.location.href = hrefFromDocsRoot("Pricing/contact.html#contactForm");
+      });
     }
   }
 
@@ -446,7 +436,7 @@ ${JSON.stringify(MOCK_PLUMBERS, null, 2)}
 Return only the JSON.`;
 
     const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${GEMINI_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -455,7 +445,6 @@ Return only the JSON.`;
     );
     
     const data = await res.json();
-    if (!res.ok) throw new Error(data.error?.message || "API error " + res.status);
     const text = data.candidates[0].content.parts[0].text.trim();
     const cleaned = text.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
     plumber = JSON.parse(cleaned);
