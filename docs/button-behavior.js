@@ -445,9 +445,11 @@ Return only the JSON.`;
     );
     
     const data = await res.json();
-    const text = data.candidates[0].content.parts[0].text.trim();
+    if (!res.ok) throw new Error(data.error?.message || "API error " + res.status);
+    const parts = data.candidates[0].content.parts;
+    const text = parts.find(p => p.text && !p.thought)?.text.trim();
+    if (!text) throw new Error("No text part found");
     const cleaned = text.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
-    plumber = JSON.parse(cleaned);
   } catch (err) {
     console.error("matchPlumber error:", err);
     plumber = findMatch(jobData.jobType);
