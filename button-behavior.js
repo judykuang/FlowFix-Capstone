@@ -165,20 +165,30 @@
 
     // Emergency action: navigate to contact form section (Figma "scroll/navigate to contact").
     const emergencyBtn = document.getElementById("myBtn");
-    if (emergencyBtn) {
-      emergencyBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        const current = window.location.pathname || "";
-        const onContact = /\/Pricing\/contact\.html$/i.test(current);
-        if (onContact) {
-          const target = document.getElementById("contactForm");
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-            return;
-          }
-        }
-        window.location.href = hrefFromDocsRoot("Pricing/contact.html#contactForm");
-      });
+const modal = document.getElementById("myModal");
+const closeBtn = modal ? modal.querySelector(".close") : null;
+
+if (emergencyBtn && modal) {
+  emergencyBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    modal.style.display = "block";
+    modal.setAttribute("aria-hidden", "false");
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      modal.style.display = "none";
+      modal.setAttribute("aria-hidden", "true");
+    });
+  }
+
+  window.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      modal.setAttribute("aria-hidden", "true");
+    }
+  });
+
     }
   }
 
