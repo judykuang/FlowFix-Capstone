@@ -422,7 +422,7 @@ async function finishFlow() {
 
   let plumber;
   try {
-    const GEMINI_KEY = "AIzaSyCYGUPAz_b1arQUBDwdN1l2eN-2LkQP8LY";
+    const GEMINI_KEY = "";
     const prompt = `You are a plumber-matching assistant for FlowFix, a NYC-based plumbing platform.
 Given the job details and plumbers list, return ONLY valid JSON with no additional/extra text.
 Shape: { "name": "...", "specialties": ["..."], "rating": 4.9, "eta": "...", "reason": "one sentence why" }
